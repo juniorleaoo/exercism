@@ -1,8 +1,6 @@
 // @ts-check
 
-const removeCommaFromText = (text) => text.replace(/,/g, '');
-
-const transformArrayInNumber = (array) => Number(removeCommaFromText(String(array)));
+const transformArrayInNumber = (array) => Number(array.join(''));
 
 /**
  * Calculates the sum of the two input arrays.
@@ -34,7 +32,7 @@ export function luckyNumber(value) {
  */
 export function errorMessage(input) {
   if (input) {
-    return Number(input) > 0 ? '' : 'Must be a number besides 0';
+    return Number(input) ? '' : 'Must be a number besides 0';
   }
 
   return 'Required field';
