@@ -8,6 +8,10 @@ function isCardEven(card){
   return card % 2 === 0;
 }
 
+function isCardOdd(card){
+  return !isCardEven(card);
+}
+
 /**
  * Get the position (index) of the card in the given stack
  *
@@ -40,7 +44,7 @@ export function doesStackIncludeCard(stack, card) {
  * @returns {boolean} true if all cards are even, false otherwise
  */
 export function isEachCardEven(stack) {
-  return stack.reduce((previous, current) => previous && isCardEven(current));
+  return stack.every(isCardEven);
 }
 
 /**
@@ -51,7 +55,7 @@ export function isEachCardEven(stack) {
  * @returns {boolean} true if the array contains odd card, false otherwise
  */
 export function doesStackIncludeOddCard(stack) {
-  return stack.findIndex(card => !isCardEven(card)) >= 0
+  return stack.some(isCardOdd)
 }
 
 /**
@@ -62,7 +66,7 @@ export function doesStackIncludeOddCard(stack) {
  * @returns {number} the first odd value
  */
 export function getFirstOddCard(stack) {
-  return stack.find(card => !isCardEven(card))
+  return stack.find(isCardOdd)
 }
 
 /**
@@ -73,5 +77,5 @@ export function getFirstOddCard(stack) {
  * @returns {number} position of the first card that is even
  */
 export function getFirstEvenCardPosition(stack) {
-  return stack.findIndex(card => isCardEven(card))
+  return stack.findIndex(isCardEven)
 }
